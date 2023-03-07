@@ -1,9 +1,14 @@
+import { Home } from "./Routes/Home/Home";
+import { Routes, Route } from "react-router-dom";
+import { Navbar } from "./Routes/Navbar/Navbar";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>hello</h1>
-      </header>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route path="/" index element={<Home />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
