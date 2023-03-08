@@ -6,11 +6,11 @@
   justify-content: center;
 }
 .text-container {
-  width: 95%;
+  width: 100%;
   text-align: center;
 }
 .logo-text {
-  font-size: 18vw;
+  font-size: 15vw;
   letter-spacing: 8px;
   line-height: 100%;
   font-weight: 900;
