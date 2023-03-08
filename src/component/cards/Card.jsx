@@ -93,10 +93,13 @@ export const PreviewCard = ({ data }) => {
           </Link>
           <Flex flexDir={"row"} justifyContent="space-between">
             <Link to={data.buy}>
-              <Button variant={"outline"}> buy</Button>
+              <Button colorScheme={"whatsapp"} variant={"outline"}>
+                {" "}
+                buy
+              </Button>
             </Link>
 
-            <Button bgColor={"red.600"}> view contract address</Button>
+            <Button colorScheme={"red"}> view contract address</Button>
           </Flex>
         </Flex>
       </div>

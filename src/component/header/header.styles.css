@@ -1,0 +1,24 @@
+.header-container {
+  width: 100vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.text-container {
+  background-image: ;
+  width: 95%;
+  text-align: center;
+}
+.logo-text {
+  font-size: 18vw;
+  letter-spacing: 8px;
+  line-height: 100%;
+  font-weight: 900;
+  background: url("../../../public/background.gif") no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
