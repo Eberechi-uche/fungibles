@@ -1,7 +1,7 @@
 import { Button, Text, Flex } from "@chakra-ui/react";
 import { modalData } from "../../atoms/modalState";
 import { useRecoilState } from "recoil";
-import { ModalCard } from "../cards/Card";
+import { ModalCard, PreviewCard } from "../cards/Card";
 
 import {
   Modal,
@@ -32,10 +32,12 @@ function CardModal() {
           backdropBlur="2px"
         />
         <ModalContent>
-          <ModalHeader>{data.data.name}</ModalHeader>
+          {/* <ModalHeader>{data.data.name}</ModalHeader>
           <ModalCloseButton />
 
-          <ModalCard data={data.data} />
+          <ModalCard data={data.data} /> */}
+          <ModalCloseButton />
+          <PreviewCard data={data.data} />
         </ModalContent>
       </Modal>
     </>

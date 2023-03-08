@@ -52,6 +52,7 @@ const getNFTMetaData = async (NFTS) => {
         symbol: metaData.contractMetadata.symbol,
         socials: metaData.contractMetadata.openSea.discordUrl,
         floorPrice: metaData.contractMetadata.openSea.floorPrice,
+        tSupply: metaData.contractMetadata.openSea.totalSupply,
       };
     })
   );

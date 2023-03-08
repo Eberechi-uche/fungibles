@@ -1,7 +1,7 @@
 import CardModal from "../../component/modals/CardModals";
 import { Input, Flex, Button } from "@chakra-ui/react";
 import { SimpleGrid } from "@chakra-ui/react";
-import { ItemCard } from "../../component/cards/Card";
+import { ItemCard, PreviewCard } from "../../component/cards/Card";
 import { useState } from "react";
 import { getAllNts } from "../../component/api/NFTs/getNfts";
 
