@@ -1,15 +1,8 @@
 import CardModal from "../../component/modals/CardModals";
-import {
-  Input,
-  Flex,
-  Button,
-  SimpleGrid,
-  Text,
-  Center,
-} from "@chakra-ui/react";
+import { Input, Flex, Button, SimpleGrid } from "@chakra-ui/react";
 
-import { ItemCard, PreviewCard } from "../../component/cards/Card";
-import { useState, useEffect } from "react";
+import { ItemCard } from "../../component/cards/Card";
+import { useState } from "react";
 import { getAllNts } from "../../component/api/NFTs/getNfts";
 import GridLoader from "react-spinners/GridLoader";
 
@@ -23,12 +16,11 @@ export const Home = () => {
     e.preventDefault();
 
     setWalletAddress(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleFetch = async () => {
     setIsloading(true);
-    const value = await getAllNts(walletAddress, "", setNFTs);
+    await getAllNts(walletAddress, "", setNFTs);
     setIsloading(false);
   };
   return (
@@ -55,7 +47,7 @@ export const Home = () => {
       </Flex>
       <CardModal />
       {!isLoading && (
-        <SimpleGrid columns={[1, 2, 4]} gap={"6"} mt={5}>
+        <SimpleGrid columns={[2, 3, 4]} gap={"6"} mt={5}>
           {nftData.map(({ value }, index) => (
             <ItemCard key={index} cardData={value} />
           ))}

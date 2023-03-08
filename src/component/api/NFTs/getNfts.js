@@ -31,7 +31,6 @@ const getNFTMetaData = async (NFTS) => {
       let metaData = await fetch(
         `${endpoint}/getNFTMetadata?contractAddress=${NFT.contract.address}&tokenId=${NFT.id.tokenId}`
       ).then(async (data) => await data.json());
-      console.log(metaData);
       let imageUrl;
 
       if (metaData.media[0].raw) {
@@ -64,8 +63,7 @@ const getAllNts = async (owner, contractAddress, setNFTs) => {
 
   const NFTs = await getNFTMetaData(data.ownedNfts);
   if (NFTs.length) {
-    let fullFilled = NFTs.filter((nft) => nft.status == "fulfilled");
-    console.log(NFTs);
+    let fullFilled = NFTs.filter((nft) => nft.status === "fulfilled");
     setNFTs(fullFilled);
   } else {
   }

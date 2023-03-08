@@ -1,14 +1,11 @@
-import { Button, Text, Flex } from "@chakra-ui/react";
 import { modalData } from "../../atoms/modalState";
 import { useRecoilState } from "recoil";
-import { ModalCard, PreviewCard } from "../cards/Card";
+import { PreviewCard } from "../cards/Card";
 
 import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
 
@@ -32,11 +29,7 @@ function CardModal() {
           backdropBlur="2px"
         />
         <ModalContent>
-          {/* <ModalHeader>{data.data.name}</ModalHeader>
-          <ModalCloseButton />
-
-          <ModalCard data={data.data} /> */}
-          <ModalCloseButton />
+          <ModalCloseButton color={"whatsapp.100"} size={"md"} />
           <PreviewCard data={data.data} />
         </ModalContent>
       </Modal>
