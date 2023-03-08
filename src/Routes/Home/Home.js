@@ -3,19 +3,21 @@ import { Input, Flex, Button } from "@chakra-ui/react";
 import { SimpleGrid } from "@chakra-ui/react";
 import { ItemCard } from "../../component/cards/Card";
 import { useState } from "react";
-import { modalData } from "../../atoms/modalState";
-import { useRecoilState } from "recoil";
-import useFetch from "../../component/customHooks/dataFetching/useFetch";
+import { getAllNts } from "../../component/api/NFTs/getNfts";
 
 export const Home = () => {
   const [walletAddress, setWalletAddress] = useState("");
-  // const { data, isPending, error } = useFetch();
+
+  const [nftData, setNFTs] = useState([]);
+
   const handleChange = (e) => {
     e.preventDefault();
     setWalletAddress(e.target.value);
     console.log(e.target.value);
   };
-  const test = ["manners", "maketh"];
+  const handleFetch = async () => {
+    await getAllNts(walletAddress, "", setNFTs);
+  };
   return (
     <div>
       <Flex gap={"5"}>
@@ -28,15 +30,21 @@ export const Home = () => {
           onChange={handleChange}
           borderRadius={"full"}
         />
-        <Button borderRadius={"full"} bg={"gray.800"} color={"whatsapp.100"}>
+        <Button
+          borderRadius={"full"}
+          bg={"gray.800"}
+          color={"whatsapp.100"}
+          onClick={handleFetch}
+        >
           Get NFT's
         </Button>
       </Flex>
       <CardModal />
       <SimpleGrid columns={[1, 2, 4]} gap={"6"} mt={5}>
-        <ItemCard cardData={["one", "two", "three"]} />
-        <ItemCard cardData={["four", "five", "six"]} />
-        <ItemCard cardData={["seven", "eigth", "nine"]} />
+        {/* {nftData.map(({ value }, index) => (
+          <ItemCard key={index} cardData={value} />
+        ))} */}
+        <ItemCard cardData={{ name: "eberechi", image: "nothing" }} />
       </SimpleGrid>
     </div>
   );

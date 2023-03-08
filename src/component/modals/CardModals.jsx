@@ -1,6 +1,7 @@
 import { Button, Text, Flex } from "@chakra-ui/react";
 import { modalData } from "../../atoms/modalState";
 import { useRecoilState } from "recoil";
+import { ModalCard } from "../cards/Card";
 
 import {
   Modal,
@@ -34,18 +35,7 @@ function CardModal() {
           <ModalHeader>{data.data[2]}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text> {data.data[0]}</Text>
-            <Text> {data.data[1]}</Text>
-            <Flex justifyContent={"flex-end"}>
-              <Button
-                borderRadius={"full"}
-                width={"max-content"}
-                w={"30%"}
-                h={"8"}
-              >
-                buy
-              </Button>
-            </Flex>
+            <ModalCard />
           </ModalBody>
         </ModalContent>
       </Modal>

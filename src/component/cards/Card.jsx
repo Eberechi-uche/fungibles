@@ -1,4 +1,15 @@
-import { Card, CardBody, Button, Text, Image, Flex } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  Button,
+  Text,
+  Image,
+  Flex,
+  Stack,
+  Heading,
+  CardFooter,
+} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { modalData } from "../../atoms/modalState";
 
@@ -12,36 +23,65 @@ export const ItemCard = ({ cardData }) => {
   };
 
   return (
-    <Card maxW={"md"}>
-      <CardBody size={"md"} p="2">
+    <Card maxW={"md"} onClick={handleClick} _hover={{ cursor: "pointer" }}>
+      <CardBody size={"md"} p="2" textAlign={"center"}>
         <Image
-          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          src={cardData.image}
           alt="Green double couch with wooden legs"
-          borderRadius="md"
-          maxW={"full"}
+          borderRadius="sm"
           mb="2"
         />
-        <Text
-          fontWeight={"2"}
-          bg={"gray.800"}
-          mt={"20"}
-          color={"white"}
-          borderRadius="full"
-          display={"inline"}
-          px="2"
-        >
-          cllection name
-        </Text>
-        <Text fontSize={"2xl"} textTransform={"uppercase"}>
-          nft name
-        </Text>
-        <Flex justify={"space-between"}>
-          <Text>address</Text>
-          <Button borderRadius={"full"} size="xs" onClick={handleClick}>
-            more
-          </Button>
+
+        <Flex justifyContent={"center"}>
+          <Text
+            fontWeight={"2"}
+            bg={"gray.800"}
+            color={"white"}
+            borderRadius="full"
+            px="2"
+            py="2"
+          >
+            cardData.name
+          </Text>
         </Flex>
       </CardBody>
     </Card>
+  );
+};
+
+export const ModalCard = ({ data }) => {
+  // const { contractAddress, image, desc, buy, title } = data;
+  return (
+    <>
+      <Card
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+        size={"lg"}
+      >
+        <Image
+          objectFit="cover"
+          maxW={{ base: "100%", sm: "200px" }}
+          src={data[2]}
+          alt="Caffe Latte"
+        />
+
+        <Stack>
+          <CardBody textAlign={"center"} m={0}>
+            <Heading size="md">{data[2]}</Heading>
+
+            <Text py="2">{data[4]}</Text>
+          </CardBody>
+
+          <CardFooter>
+            <Link to={data[6]}>
+              <Button variant="solid" colorScheme="blue">
+                Buy
+              </Button>
+            </Link>
+          </CardFooter>
+        </Stack>
+      </Card>
+    </>
   );
 };
