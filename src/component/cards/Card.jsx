@@ -1,5 +1,6 @@
 import { Card, CardBody, Button, Text, Image, Flex } from "@chakra-ui/react";
 import React from "react";
+import { act } from "react-dom/test-utils";
 
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -63,6 +64,12 @@ export const ItemCard = ({ cardData }) => {
 };
 
 export const PreviewCard = ({ data }) => {
+  const openInNewTab = (url) => {
+    window.open(url, "_blank", "noreferrer");
+  };
+  const handleViewClick = (action) => {
+    alert(action);
+  };
   return (
     <>
       <div className="card-wrapper">
@@ -75,20 +82,43 @@ export const PreviewCard = ({ data }) => {
 
             <Text maxH={"30%"}>{data.des}</Text>
           </div>
-          <Link to={"data.socials"}>
-            <Flex m={5} justify={"center"}>
-              <Text color={"blue.800"}>join community</Text>
-              <img src="/discord.png" alt="icon" width={"30px"} />
-            </Flex>
-          </Link>
-          <Flex flexDir={"row"} justifyContent="space-between">
-            <Link to={data.buy}>
-              <Button colorScheme={"whatsapp"} variant={"outline"}>
-                buy
-              </Button>
-            </Link>
 
-            <Button colorScheme={"red"}> view contract address</Button>
+          <Flex
+            m={5}
+            justify={"center"}
+            onClick={() => {
+              openInNewTab(data.socials);
+            }}
+            _hover={{
+              cursor: "pointer",
+              transform: "scale(1.2)",
+              transition: " transform 0.7s ease-in-out",
+            }}
+          >
+            <Text color={"blue.800"}>join community</Text>
+            <img src="/discord.png" alt="icon" width={"30px"} />
+          </Flex>
+
+          <Flex flexDir={"row"} justifyContent="space-between">
+            <Button
+              colorScheme={"whatsapp"}
+              variant={"outline"}
+              onClick={() => {
+                openInNewTab(data.buy);
+              }}
+            >
+              buy
+            </Button>
+
+            <Button
+              colorScheme={"red"}
+              onClick={() => {
+                handleViewClick(data.contractAdd);
+              }}
+            >
+              {" "}
+              view contract address
+            </Button>
           </Flex>
         </Flex>
       </div>
