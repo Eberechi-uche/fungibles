@@ -32,11 +32,10 @@ function CardModal() {
           backdropBlur="2px"
         />
         <ModalContent>
-          <ModalHeader>{data.data[2]}</ModalHeader>
+          <ModalHeader>{data.data.name}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <ModalCard />
-          </ModalBody>
+
+          <ModalCard data={data.data} />
         </ModalContent>
       </Modal>
     </>

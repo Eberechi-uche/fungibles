@@ -41,10 +41,9 @@ export const Home = () => {
       </Flex>
       <CardModal />
       <SimpleGrid columns={[1, 2, 4]} gap={"6"} mt={5}>
-        {/* {nftData.map(({ value }, index) => (
+        {nftData.map(({ value }, index) => (
           <ItemCard key={index} cardData={value} />
-        ))} */}
-        <ItemCard cardData={{ name: "eberechi", image: "nothing" }} />
+        ))}
       </SimpleGrid>
     </div>
   );

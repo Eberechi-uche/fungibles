@@ -63,9 +63,9 @@ const getAllNts = async (owner, contractAddress, setNFTs) => {
 
   const NFTs = await getNFTMetaData(data.ownedNfts);
   if (NFTs.length) {
-    let fullFilled = NFTs;
+    let fullFilled = NFTs.filter((nft) => nft.status == "fulfilled");
     console.log(NFTs);
-    setNFTs(NFTs);
+    setNFTs(fullFilled);
   } else {
   }
 };

@@ -10,15 +10,16 @@ import {
   CardFooter,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { modalData } from "../../atoms/modalState";
 
 export const ItemCard = ({ cardData }) => {
   const [value, setValue] = useRecoilState(modalData);
+
   const handleClick = () => {
     setValue(() => ({
       open: true,
-      data: [...cardData],
+      data: cardData,
     }));
   };
 
@@ -41,7 +42,7 @@ export const ItemCard = ({ cardData }) => {
             px="2"
             py="2"
           >
-            cardData.name
+            {cardData.name}
           </Text>
         </Flex>
       </CardBody>
@@ -50,7 +51,6 @@ export const ItemCard = ({ cardData }) => {
 };
 
 export const ModalCard = ({ data }) => {
-  // const { contractAddress, image, desc, buy, title } = data;
   return (
     <>
       <Card
@@ -62,19 +62,19 @@ export const ModalCard = ({ data }) => {
         <Image
           objectFit="cover"
           maxW={{ base: "100%", sm: "200px" }}
-          src={data[2]}
+          src={data.image}
           alt="Caffe Latte"
         />
 
-        <Stack>
+        <Stack borderRadius={"none"}>
           <CardBody textAlign={"center"} m={0}>
-            <Heading size="md">{data[2]}</Heading>
+            <Heading size="md">{}</Heading>
 
-            <Text py="2">{data[4]}</Text>
+            <Text py="2">{data.des}</Text>
           </CardBody>
 
           <CardFooter>
-            <Link to={data[6]}>
+            <Link to={"/"}>
               <Button variant="solid" colorScheme="blue">
                 Buy
               </Button>
@@ -82,6 +82,21 @@ export const ModalCard = ({ data }) => {
           </CardFooter>
         </Stack>
       </Card>
+    </>
+  );
+};
+
+export const PreviewCard = () => {
+  return (
+    <>
+      <div className="card-wrapper">
+        <div className="card-img-container"></div>
+        <div className=".info">
+          <h2> get insite and help</h2>
+          <p className="main-paragraph"> discover the beauty of everywhere</p>
+          <div className="overview"></div>
+        </div>
+      </div>
     </>
   );
 };
