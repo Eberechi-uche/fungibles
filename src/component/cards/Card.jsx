@@ -1,8 +1,6 @@
 import { Card, CardBody, Button, Text, Image, Flex } from "@chakra-ui/react";
 import React from "react";
-import { act } from "react-dom/test-utils";
 
-import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { modalData } from "../../atoms/modalState";
 import "./card.styles.css";
@@ -116,7 +114,6 @@ export const PreviewCard = ({ data }) => {
                 handleViewClick(data.contractAdd);
               }}
             >
-              {" "}
               view contract address
             </Button>
           </Flex>

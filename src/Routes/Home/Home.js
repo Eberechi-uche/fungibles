@@ -41,6 +41,7 @@ export const Home = () => {
           colorScheme={"whatsapp"}
           onClick={handleFetch}
           variant={"outline"}
+          isDisabled={walletAddress.length < 5}
         >
           Get NFT's
         </Button>
